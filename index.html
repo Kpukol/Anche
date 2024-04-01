@@ -1,33 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Онлайн чат с сохранением сообщений</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Website with Vertical Menu</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+.menu {
+  width: 200px;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.timer {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+.container {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+</style>
 </head>
 <body>
-    <h1>Онлайн чат</h1>
 
-    <div id="chatbox"></div>
-    <input type="text" id="message" placeholder="Введите сообщение">
-    <button onclick="sendMessage()">Отправить</button>
+<div class="menu">
+  <ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+</div>
 
-    <script>
-        function sendMessage() {
-            const message = document.getElementById('message').value;
-            document.getElementById('chatbox').innerHTML += '<p>Вы: ' + message + '</p>';
+<div class="timer">
+  <p>Time remaining: <span id="countdown"></span></p>
+</div>
 
-            // Отправляем сообщение на сервер для сохранения
-            fetch('save_message.php', {
-                method: 'POST',
-                body: JSON.stringify({ message: message }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => console.log(data));
+<div class="container">
+  <h1>Welcome to our website</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</div>
 
-            document.getElementById('message').value = '';
-        }
-    </script>
+<script>
+var countDownDate = new Date().getTime() + 2460601000;
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var hours = Math.floor((distance % (1000  60  60  24)) / (1000  60  60));
+
+  document.getElementById("countdown").innerHTML = hours + "h ";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
 </body>
 </html>
