@@ -14,31 +14,35 @@
 <body>
 
 <div class="timer" id="timer">24:00:00</div>
+<button onclick="startTimer()">Start Timer</button>
 
 <script>
 var timer = document.getElementById('timer');
+var countdownInterval;
 
-var countDownDate = new Date().getTime() + 2460601000;
+function startTimer() {
+  var countDownDate = new Date().getTime() + 24*60*60*1000;
 
-var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
+  countdownInterval = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
 
-  var hours = Math.floor((distance % (1000  60  60  24)) / (1000  60  60));
-  var minutes = Math.floor((distance % (1000  60  60)) / (1000  60));
-  var seconds = Math.floor((distance % (1000  60)) / 1000);
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  hours = (hours < 10) ? '0' + hours : hours;
-  minutes = (minutes < 10) ? '0' + minutes : minutes;
-  seconds = (seconds < 10) ? '0' + seconds : seconds;
+    hours = (hours < 10) ? '0' + hours : hours;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
 
-  timer.innerHTML = hours + ':' + minutes + ':' + seconds;
+    timer.innerHTML = hours + ':' + minutes + ':' + seconds;
 
-  if (distance < 0) {
-    clearInterval(x);
-    timer.innerHTML = "EXPIRED";
-  }
-}, 1000);
+    if (distance < 0) {
+      clearInterval(countdownInterval);
+      timer.innerHTML = "EXPIRED";
+    }
+  }, 1000);
+}
 </script>
 
 </body>
