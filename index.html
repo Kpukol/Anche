@@ -4,69 +4,20 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>White Website with Vertical Menu</title>
+<title>24 Hour Timer</title>
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: #000;
-}
-
-.menu {
-  width: 200px;
-  height: 100vh;
-  background-color: #fff;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-
-.menu ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.menu li {
-  padding: 10px 15px;
-  border-bottom: 1px solid #ccc;
-}
-
 .timer {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  font-size: 18px;
+  font-size: 24px;
 }
-
-.container {
-  margin-left: 220px;
-  padding: 20px;
-}
-
 </style>
 </head>
 <body>
 
-<div class="menu">
-  <ul>
-    <li>Home</li>
-    <li>About</li>
-    <li>Contact</li>
-  </ul>
-</div>
-
-<div class="timer">
-  <p>Time remaining: <span id="countdown"></span></p>
-</div>
-
-<div class="container">
-  <h1>Welcome to our website</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-</div>
+<div class="timer" id="timer">24:00:00</div>
 
 <script>
+var timer = document.getElementById('timer');
+
 var countDownDate = new Date().getTime() + 2460601000;
 
 var x = setInterval(function() {
@@ -74,12 +25,18 @@ var x = setInterval(function() {
   var distance = countDownDate - now;
 
   var hours = Math.floor((distance % (1000  60  60  24)) / (1000  60  60));
+  var minutes = Math.floor((distance % (1000  60  60)) / (1000  60));
+  var seconds = Math.floor((distance % (1000  60)) / 1000);
 
-  document.getElementById("countdown").innerHTML = hours + "h ";
+  hours = (hours < 10) ? '0' + hours : hours;
+  minutes = (minutes < 10) ? '0' + minutes : minutes;
+  seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+  timer.innerHTML = hours + ':' + minutes + ':' + seconds;
 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
+    timer.innerHTML = "EXPIRED";
   }
 }, 1000);
 </script>
