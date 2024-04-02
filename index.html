@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,23 +8,26 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
         }
 
         header {
             background-color: #FFFFFF;
             padding: 10px;
             text-align: center;
+            flex: 1;
         }
 
         nav {
             background-color: #FFFFFF;
             padding: 10px;
+            width: 150px;
         }
 
         ul {
             list-style-type: none;
             padding: 0;
-            text-align: center;
+            text-align: left;
         }
 
         li {
@@ -44,8 +46,6 @@
     </style>
 </head>
 <body>
-    <header>Меню</header>
-
     <nav>
         <ul>
             <li><a href="#">Главная</a></li>
@@ -53,5 +53,9 @@
             <li><a href="#">Контакты</a></li>
         </ul>
     </nav>
+
+    <header>
+        <h1>Меню</h1>
+    </header>
 </body>
 </html>
