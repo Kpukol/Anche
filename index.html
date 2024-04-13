@@ -28,32 +28,29 @@
 <body>
 <h1>Rocket Engine Module</h1>
 <div id="engine"></div>
-<button onclick="startEngine()">Start Engine</button>
-<button onclick="stopEngine()">Stop Engine</button>
+<button onclick="increaseSpeed(10)">Increase Speed (+10)</button>
+<button onclick="increaseSpeed(20)">Increase Speed (+20)</button>
+<button onclick="decreaseSpeed(10)">Decrease Speed (-10)</button>
+<button onclick="decreaseSpeed(20)">Decrease Speed (-20)</button>
 
 <script>
-    let isEngineRunning = false;
     let throttle = 0;
 
-    function startEngine() {
-        isEngineRunning = true;
+    function updateEngineSpeed() {
         let engine = document.getElementById("engine");
-        let interval = setInterval(() => {
-            throttle += 10;
-            if (throttle > 100) throttle = 100;
-            engine.style.height = throttle + "px";
-
-            if (!isEngineRunning) {
-                clearInterval(interval);
-            }
-        }, 100);
+        engine.style.height = throttle + "px";
     }
 
-    function stopEngine() {
-        isEngineRunning = false;
-        throttle = 0;
-        let engine = document.getElementById("engine");
-        engine.style.height = "0";
+    function increaseSpeed(value) {
+        throttle += value;
+        if (throttle > 200) throttle = 200;
+        updateEngineSpeed();
+    }
+
+    function decreaseSpeed(value) {
+        throttle -= value;
+        if (throttle < 0) throttle = 0;
+        updateEngineSpeed();
     }
 </script>
 </body>
