@@ -1,57 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rocket Engine Module</title>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-
-    #engine {
-        width: 100px;
-        height: 200px;
-        background-color: blue;
-        position: relative;
-    }
-
-    button {
-        margin-top: 10px;
-    }
-</style>
+    <title>Paint with Physics</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-<h1>Rocket Engine Module</h1>
-<div id="engine"></div>
-<button onclick="increaseSpeed(10)">Increase Speed (+10)</button>
-<button onclick="increaseSpeed(20)">Increase Speed (+20)</button>
-<button onclick="decreaseSpeed(10)">Decrease Speed (-10)</button>
-<button onclick="decreaseSpeed(20)">Decrease Speed (-20)</button>
+    <canvas id="paintCanvas" width="800" height="600"></canvas>
+    
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.17.1/build/matter.min.js"></script>
+    <script>
+        // Create Matter.js engine
+        const Engine = Matter.Engine;
+        const Render = Matter.Render;
+        const World = Matter.World;
+        const Bodies = Matter.Bodies;
 
-<script>
-    let throttle = 0;
+        const engine = Engine.create();
+        
+        // Create rendering
+        const render = Render.create({
+            element: document.body,
+            engine: engine,
+            options: {
+                width: 800,
+                height: 600,
+                wireframes: false
+            }
+        });
+        
+        Render.run(render);
+        
+        // Add physics bodies
+        const boxA = Bodies.rectangle(400, 200, 80, 80);
+        const boxB = Bodies.rectangle(450, 50, 80, 80);
+        
+        World.add(engine.world, [boxA, boxB]);
 
-    function updateEngineSpeed() {
-        let engine = document.getElementById("engine");
-        engine.style.height = throttle + "px";
-    }
+        // Add event listener for mouse clicks
+        document.getElementById('paintCanvas').addEventListener('click', (event) => {
+            const mousePosition = {
+                x: event.clientX - event.target.offsetLeft,
+                y: event.clientY - event.target.offsetTop
+            };
 
-    function increaseSpeed(value) {
-        throttle += value;
-        if (throttle > 20000000) throttle = 20000000;
-        updateEngineSpeed();
-    }
+            const newBox = Bodies.rectangle(mousePosition.x, mousePosition.y, 50, 50);
+            World.add(engine.world, [newBox]);
+        });
 
-    function decreaseSpeed(value) {
-        throttle -= value;
-        if (throttle < 0) throttle = 0;
-        updateEngineSpeed();
-    }
-</script>
+        // Start the engine
+        Engine.run(engine);
+    </script>
 </body>
 </html>
