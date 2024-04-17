@@ -5,12 +5,50 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online Pixel Art Creator</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 460px;
+      display: grid;
+      grid-template-columns: repeat(60, 20px);
+      grid-gap: 0;
+    }
+
+    .pixel {
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
-<body style="background-color: #f0f0f0;">
-  <div style="width: 1200px; height: 460px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center;">
-    <div style="width: 20px; height: 20px; background-color: green;"></div>
-    <div style="width: 20px; height: 20px; background-color: red;"></div>
-    <div style="width: 20px; height: 20px; background-color: yellow;"></div>
+<body>
+  <div class="canvas">
+    <!-- Generate 1200x460 pixels -->
+    <!-- You can add JavaScript to make the pixels interactive -->
+    <!-- For simplicity, we will only generate static pixels here -->
+    <!-- You can customize the pixel colors by adding classes or inline styles -->
+    <!-- For example: <div class="pixel red"></div> -->
+    <!-- Use CSS to style individual pixels -->
+
+    <!-- Example of generating pixels -->
+    <!-- You can copy and paste this code to create more pixels -->
+    <!-- Start -->
+    <!-- Row 1 -->
+    <div class="pixel"></div>
+    <div class="pixel"></div>
+    <!-- Add more pixels here -->
+    <!-- End -->
+
   </div>
 </body>
 </html>
