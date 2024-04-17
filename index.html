@@ -1,58 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Paint with Physics</title>
-    <style>
-        canvas {
-            border: 1px solid black;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Динамика жидкости и газов</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="paintCanvas" width="800" height="600"></canvas>
-    
-    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.17.1/build/matter.min.js"></script>
-    <script>
-        // Create Matter.js engine
-        const Engine = Matter.Engine;
-        const Render = Matter.Render;
-        const World = Matter.World;
-        const Bodies = Matter.Bodies;
+  <header>
+    <h1>Динамика жидкости и газов</h1>
+  </header>
 
-        const engine = Engine.create();
-        
-        // Create rendering
-        const render = Render.create({
-            element: document.body,
-            engine: engine,
-            options: {
-                width: 800,
-                height: 600,
-                wireframes: false
-            }
-        });
-        
-        Render.run(render);
-        
-        // Add physics bodies
-        const boxA = Bodies.rectangle(400, 200, 80, 80);
-        const boxB = Bodies.rectangle(450, 50, 80, 80);
-        
-        World.add(engine.world, [boxA, boxB]);
+  <main>
+    <h2>Динамические явления в жидкостях и газах</h2>
+    <p>Тут вы можете узнать больше о динамике жидкости и газов.</p>
+    <p>Просмотрите нашу информацию о явлениях, которые происходят внутри жидкостей и газов и их влияние на окружающую среду.</p>
+  </main>
 
-        // Add event listener for mouse clicks
-        document.getElementById('paintCanvas').addEventListener('click', (event) => {
-            const mousePosition = {
-                x: event.clientX - event.target.offsetLeft,
-                y: event.clientY - event.target.offsetTop
-            };
-
-            const newBox = Bodies.rectangle(mousePosition.x, mousePosition.y, 50, 50);
-            World.add(engine.world, [newBox]);
-        });
-
-        // Start the engine
-        Engine.run(engine);
-    </script>
+  <footer>
+    <p>&copy; 2023 Динамика жидкости и газов</p>
+  </footer>
 </body>
 </html>
