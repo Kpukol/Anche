@@ -33,22 +33,22 @@
 </head>
 <body>
   <div class="canvas">
-    <!-- Generate 1200x460 pixels -->
-    <!-- You can add JavaScript to make the pixels interactive -->
-    <!-- For simplicity, we will only generate static pixels here -->
-    <!-- You can customize the pixel colors by adding classes or inline styles -->
-    <!-- For example: <div class="pixel red"></div> -->
-    <!-- Use CSS to style individual pixels -->
+    <!-- JavaScript code for drawing on the canvas -->
+    <script>
+      const canvas = document.querySelector('.canvas');
 
-    <!-- Example of generating pixels -->
-    <!-- You can copy and paste this code to create more pixels -->
-    <!-- Start -->
-    <!-- Row 1 -->
-    <div class="pixel"></div>
-    <div class="pixel"></div>
-    <!-- Add more pixels here -->
-    <!-- End -->
+      function handlePixelClick(event) {
+        const pixel = event.target;
+        pixel.style.backgroundColor = 'black';
+      }
 
+      for (let i = 0; i < 1200; i++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+        pixel.addEventListener('click', handlePixelClick);
+        canvas.appendChild(pixel);
+      }
+    </script>
   </div>
 </body>
 </html>
