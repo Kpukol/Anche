@@ -1,51 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixel Art Creator</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    #canvas {
-      display: grid;
-      grid-template-columns: repeat(30, 20px);
-      grid-gap: 1px;
-    }
-
-    .pixel {
-      width: 20px;
-      height: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-    }
-  </style>
-</head>
-<body>
-  <div id="canvas">
-    <!-- JavaScript code for drawing on the canvas -->
-    <script>
-      const canvas = document.querySelector('#canvas');
-
-      function handlePixelClick(event) {
-        const pixel = event.target;
-        pixel.style.backgroundColor = 'black';
-      }
-
-      for (let i = 0; i < 900; i++) {
-        const pixel = document.createElement('div');
-        pixel.classList.add('pixel');
-        pixel.addEventListener('click', handlePixelClick);
-        canvas.appendChild(pixel);
-      }
-    </script>
-  </div>
-</body>
+<!DOCTYPE!>
+<html>
+ <head>
+  <title>Пример веб-страницы</title>
+ </head>
+ <body>
+  <h1>Заголовок</h1>
+  <img src="images/cat.jpg" width="600" height="200" alt="Котик">
+ </body>
 </html>
