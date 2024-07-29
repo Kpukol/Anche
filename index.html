@@ -1,9 +1,50 @@
-<html>
- <head>
-  <title>1234567890</title>
- </head>
- <body>
-  <h1>0987654321</h1>
-  <img src="images/cat.jpg" width="600" height="200" alt="Котик">
- </body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с логином</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .user-list li {
+            margin: 10px 0;
+        }
+        .login-button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    **<h2>Вход</h2>**
+    <form action="dashboard.html" method="post">
+        <input type="text" placeholder="Логин" required>
+        <input type="password" placeholder="Пароль" required>
+        <button type="submit" class="login-button">Войти</button>
+    </form>
+
+    **<h3>Список пользователей</h3>**
+    <ul class="user-list">
+        <li><a href="http://example.com/user1">Пользователь 1</a></li>
+        <li><a href="http://example.com/user2">Пользователь 2</a></li>
+        <li><a href="http://example.com/user3">Пользователь 3</a></li>
+    </ul>
+</div>
+
+</body>
 </html>
